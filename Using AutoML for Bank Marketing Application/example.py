@@ -7,12 +7,11 @@ print("downloading with urllib")
 
 bank_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank.zip"
 bank_filename = "./bank.zip"
-bank_dir = "./bank/"
 
 bank_additional_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip"
 bank_additional_filename = "./bank-additional.zip"
-bank_additional_dir = "./bank-additional/"
 
+extranct_dir = "./machine-learning-databases-00222/"
 
 with urllib.request.urlopen(bank_url) as web:
     # 为保险起见使用二进制写文件模式，防止编码错误
@@ -20,7 +19,7 @@ with urllib.request.urlopen(bank_url) as web:
         outfile.write(web.read())
 f = zipfile.ZipFile(bank_filename, 'r')
 for file in f.namelist():
-    f.extract(file, bank_dir)
+    f.extract(file, extranct_dir)
 
 
 with urllib.request.urlopen(bank_additional_url) as web:
@@ -29,7 +28,7 @@ with urllib.request.urlopen(bank_additional_url) as web:
         outfile.write(web.read())
 f = zipfile.ZipFile(bank_additional_filename, 'r')
 for file in f.namelist():
-    f.extract(file, bank_additional_dir)
+    f.extract(file, extranct_dir)
 
 
 # print("downloading with " + bank_url)
